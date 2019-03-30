@@ -3,8 +3,7 @@ package com.datadog.logmonitor.pubsub;
 import com.datadog.logmonitor.domain.Hit;
 import lombok.experimental.UtilityClass;
 
-import static com.datadog.logmonitor.pubsub.Topics.AGGREGATE_PER_SECOND;
-import static com.datadog.logmonitor.pubsub.Topics.NEW_HIT;
+import static com.datadog.logmonitor.pubsub.Topics.*;
 
 @UtilityClass
 public class Messages {
@@ -16,4 +15,9 @@ public class Messages {
     public Message<?> aggregatePerSecondMessage() {
         return new Message<>(AGGREGATE_PER_SECOND);
     }
+
+    public Message<?> aggregatePerSectionMessage() {
+        return new Message<>(AGGREGATE_PER_SECTION);
+    }
+
 }

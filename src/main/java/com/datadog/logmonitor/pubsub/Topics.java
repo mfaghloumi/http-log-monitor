@@ -9,4 +9,5 @@ public class Topics {
 
     public static final String AGGREGATE_PER_SECOND = "aggregatePerSecond";
 
+    public static final String AGGREGATE_PER_SECTION = "aggregatePerSection";
 }
