@@ -1,4 +1,4 @@
-##HTTP log monitoring console program
+## HTTP log monitoring console program
 
 Write a simple console program that monitors HTTP traffic on your machine. Consume an actively written-to [w3c-formatted](https://www.w3.org/Daemon/User/Config/Logging.html) HTTP access log . It should default to reading /tmp/access.log and be overrideable
 
