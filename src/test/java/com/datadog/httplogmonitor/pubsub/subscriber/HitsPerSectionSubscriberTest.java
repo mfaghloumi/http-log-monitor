@@ -29,31 +29,18 @@ public class HitsPerSectionSubscriberTest {
     }
 
     @Test
-    public void display_ordered_top_10_section() {
-        HitsPerSectionSubscriber subscriber = new HitsPerSectionSubscriber();
-        IntStream.rangeClosed(0, 100).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("A"))));
-        IntStream.rangeClosed(0, 90).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("B"))));
-        IntStream.rangeClosed(0, 80).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("C"))));
-        IntStream.rangeClosed(0, 70).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("D"))));
-        IntStream.rangeClosed(0, 60).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("E"))));
-        IntStream.rangeClosed(0, 40).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("F"))));
-        IntStream.rangeClosed(0, 30).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("G"))));
-        IntStream.rangeClosed(0, 20).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("H"))));
-        IntStream.rangeClosed(0, 10).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("I"))));
-        IntStream.rangeClosed(0, 1).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("J"))));
-        IntStream.rangeClosed(0, 100).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("Z"))));
+    public void display_ordered_top_2_section() {
+        HitsPerSectionSubscriber subscriber = new HitsPerSectionSubscriber(2);
+        IntStream.rangeClosed(0, 30).forEach(i ->
+                subscriber.onMessage(Messages.newHitMessage(new Hit("user", "A", 1))));
+        IntStream.rangeClosed(0, 20).forEach(i ->
+                subscriber.onMessage(Messages.newHitMessage(new Hit("user", "B", 1))));
+        IntStream.rangeClosed(0, 30).forEach(i ->
+                subscriber.onMessage(Messages.newHitMessage(new Hit("user", "C", 1))));
         subscriber.onMessage(Messages.aggregatePerSectionMessage());
-        String top10 = "### Top 10 sections :\n" +
-                "\t - A:\t101\n" +
-                "\t - Z:\t101\n" +
-                "\t - B:\t91\n" +
-                "\t - C:\t81\n" +
-                "\t - D:\t71\n" +
-                "\t - E:\t61\n" +
-                "\t - F:\t41\n" +
-                "\t - G:\t31\n" +
-                "\t - H:\t21\n" +
-                "\t - I:\t11\n";
+        String top10 = "### Top 2 sections :\n" +
+                "\t - A:\t[ Top 3 users = [user], totalContentSize=31, hitsCount=31 ]\n" +
+                "\t - C:\t[ Top 3 users = [user], totalContentSize=31, hitsCount=31 ]\n";
         assertEquals("Top 10 sections should be logged from the top visited to the least visited",
                 outContent.toString(), top10);
     }

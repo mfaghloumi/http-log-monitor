@@ -1,6 +1,7 @@
 package com.datadog.httplogmonitor.pubsub.subscriber;
 
 import com.datadog.httplogmonitor.domain.Hit;
+import com.datadog.httplogmonitor.domain.SectionStatistics;
 import com.datadog.httplogmonitor.pubsub.Message;
 
 import java.util.Map;
@@ -9,7 +10,19 @@ import java.util.concurrent.ConcurrentMap;
 
 public class HitsPerSectionSubscriber implements Subscriber {
 
-    private ConcurrentMap<String, Long> hitsPerSection = new ConcurrentHashMap<>();
+    private ConcurrentMap<String, SectionStatistics> hitsPerSection = new ConcurrentHashMap<>();
+
+    private static final int DEFAULT_TOP_N = 10;
+
+    private int topN;
+
+    public HitsPerSectionSubscriber(int topN) {
+        this.topN = topN;
+    }
+
+    public HitsPerSectionSubscriber() {
+        this(DEFAULT_TOP_N);
+    }
 
     @Override
     public void onMessage(Message<?> message) {
@@ -24,11 +37,11 @@ public class HitsPerSectionSubscriber implements Subscriber {
 
     private void updateHits(Message<?> message) {
         String section = ((Hit) message.getPayload()).getSection();
-        hitsPerSection.compute(section, (oldSection, oldCount) -> {
-            if (oldCount == null) {
-                return 1L;
+        hitsPerSection.compute(section, (oldSection, oldStats) -> {
+            if (oldStats == null) {
+                return new SectionStatistics().update((Hit) message.getPayload());
             }
-            return oldCount + 1L;
+            return oldStats.update((Hit) message.getPayload());
         });
     }
 
@@ -36,11 +49,11 @@ public class HitsPerSectionSubscriber implements Subscriber {
         if (hitsPerSection.isEmpty()) {
             return;
         }
-        System.out.println("### Top 10 sections :");
+        System.out.println("### Top " + topN + " sections :");
         hitsPerSection.entrySet()
                 .stream()
-                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
-                .limit(10)
+                .sorted(Map.Entry.<String, SectionStatistics>comparingByValue().reversed())
+                .limit(topN)
                 .forEach(e -> System.out.printf("\t - %s:\t%s\n", e.getKey(), e.getValue()));
     }
 

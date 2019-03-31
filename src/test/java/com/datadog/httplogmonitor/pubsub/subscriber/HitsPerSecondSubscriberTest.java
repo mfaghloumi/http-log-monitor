@@ -34,7 +34,8 @@ public class HitsPerSecondSubscriberTest {
     @Test
     public void alert_when_threshold_is_triggered() {
         HitsPerSecondSubscriber subscriber = new HitsPerSecondSubscriber(THRESHOLD);
-        IntStream.rangeClosed(1, 12).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("A"))));
+        IntStream.rangeClosed(1, 12).forEach(i ->
+                subscriber.onMessage(Messages.newHitMessage(new Hit("user", "A", 1))));
         subscriber.onMessage(Messages.aggregatePerSecondMessage());
         assertThat("A high traffic alert should have been generated",
                 outContent.toString(), startsWith("### High traffic generated an alert - hits = 12.0, triggered at"));
@@ -43,7 +44,8 @@ public class HitsPerSecondSubscriberTest {
     @Test
     public void alert_when_threshold_is_recovered() throws Exception {
         HitsPerSecondSubscriber subscriber = new HitsPerSecondSubscriber(THRESHOLD);
-        IntStream.rangeClosed(1, 12).forEach(i -> subscriber.onMessage(Messages.newHitMessage(new Hit("A"))));
+        IntStream.rangeClosed(1, 12).forEach(i ->
+                subscriber.onMessage(Messages.newHitMessage(new Hit("user", "A", 1))));
         subscriber.onMessage(Messages.aggregatePerSecondMessage());
         outContent.reset();
         Thread.sleep(1_000);

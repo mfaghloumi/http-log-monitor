@@ -15,7 +15,6 @@ import java.io.File;
 import static com.datadog.httplogmonitor.pubsub.Topic.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-//TODO Statistics
 public class Main {
 
     private static final int DELAY_MILLIS = 500;
