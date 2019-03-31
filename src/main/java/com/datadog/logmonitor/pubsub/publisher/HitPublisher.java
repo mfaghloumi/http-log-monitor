@@ -19,22 +19,24 @@ public class HitPublisher implements TailerListener, Publisher {
 
     @Override
     public void init(Tailer tailer) {
-        //TODO
+        //Nothing to do
     }
 
     @Override
     public void fileNotFound() {
-        //TODO
+        System.err.println("File does not exist");
+        System.exit(1);
     }
 
     @Override
     public void fileRotated() {
-        //TODO
+        System.err.println("Log file rotation not managed");
+        System.exit(1);
     }
 
     @Override
     public void handle(String line) {
-        Optional.of(line)
+        Optional.ofNullable(line)
                 .map(HitTransformer::toHit)
                 .map(Messages::newHitMessage)
                 .ifPresent(this::publish);
@@ -42,7 +44,8 @@ public class HitPublisher implements TailerListener, Publisher {
 
     @Override
     public void handle(Exception ex) {
-        //TODO
+        System.err.printf("Issue when processing the log file:\n\t%s\n", ex.getMessage());
+        System.exit(1);
     }
 
     @Override

@@ -32,7 +32,12 @@ public class PubSub {
     }
 
     public void publish(Message<?> message) {
-        messages.add(message);
+        try {
+            messages.put(message);
+        } catch (InterruptedException e) {
+            System.err.printf("Failed to publish message : '%s' due to '%s'\n", message, e.getMessage());
+            System.exit(1);
+        }
     }
 
     public void subscribe(Subscriber subscriber, String... topics) {
@@ -43,7 +48,6 @@ public class PubSub {
         Arrays.stream(topics).forEach(topic -> subscribersPerTopic.remove(topic, subscriber));
     }
 
-    //TODO Manage exceptions
     private void distribute() {
         try {
             while (true) {
@@ -52,6 +56,7 @@ public class PubSub {
                         .forEach(subscriber -> subscriber.onMessage(message));
             }
         } catch (InterruptedException e) {
+            System.err.printf("Failed to poll queue due to '%s'\n", e.getMessage());
             System.exit(1);
         }
     }

@@ -38,7 +38,7 @@ public class CommandUtils {
             cmd = parser.parse(options, args);
         } catch (ParseException pe) {
             formatter.printHelp(CMD_NAME, options);
-            System.exit(-1);
+            System.exit(1);
         }
         String filename = cmd.getOptionValue("file", DEFAULT_ACCESS_LOG);
         Double threshold = null;
@@ -48,7 +48,7 @@ public class CommandUtils {
                     .get();
         } catch (NumberFormatException e) {
             formatter.printHelp(CMD_NAME, options);
-            System.exit(-1);
+            System.exit(1);
         }
         return new Parameters(filename, threshold);
     }
