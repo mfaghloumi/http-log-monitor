@@ -11,7 +11,7 @@ public class CommandUtils {
 
     private final String CMD_NAME = "http-log-monitor";
 
-    private static final String DEFAULT_ACCESS_LOG = "access.log";
+    private static final String DEFAULT_ACCESS_LOG = "/tmp/access.log";
 
     private static final String DEFAULT_THRESHOLD = "10";
 

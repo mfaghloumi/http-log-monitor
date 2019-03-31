@@ -1,0 +1,7 @@
+version: '3.3'
+
+services:
+  http-log-monitor:
+    build: .
+    volumes:
+      - ./access.log:/tmp/access.log
