@@ -1,9 +1,9 @@
-package com.datadog.logmonitor.pubsub;
+package com.datadog.httplogmonitor.pubsub;
 
-import com.datadog.logmonitor.domain.Hit;
+import com.datadog.httplogmonitor.domain.Hit;
 import lombok.experimental.UtilityClass;
 
-import static com.datadog.logmonitor.pubsub.Topic.*;
+import static com.datadog.httplogmonitor.pubsub.Topic.*;
 
 @UtilityClass
 public class Messages {

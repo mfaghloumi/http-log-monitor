@@ -1,7 +1,7 @@
-package com.datadog.logmonitor.pubsub.subscriber;
+package com.datadog.httplogmonitor.pubsub.subscriber;
 
-import com.datadog.logmonitor.domain.Hit;
-import com.datadog.logmonitor.pubsub.Messages;
+import com.datadog.httplogmonitor.domain.Hit;
+import com.datadog.httplogmonitor.pubsub.Messages;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,7 @@
-package com.datadog.logmonitor.pubsub.publisher;
+package com.datadog.httplogmonitor.pubsub.publisher;
 
-import com.datadog.logmonitor.pubsub.Message;
-import com.datadog.logmonitor.pubsub.PubSub;
+import com.datadog.httplogmonitor.pubsub.Message;
+import com.datadog.httplogmonitor.pubsub.PubSub;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;

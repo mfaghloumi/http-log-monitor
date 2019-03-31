@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-    <option name="MAIN_CLASS_NAME" value="com.datadog.logmonitor.Main" />
-    <module name="log-monitoring" />
+    <option name="MAIN_CLASS_NAME" value="com.datadog.httplogmonitor.Main" />
+    <module name="http-log-monitor" />
     <option name="PROGRAM_PARAMETERS" value="-f access.log -t 10" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.datadog.logmonitor.transformer.*" />
+        <option name="PATTERN" value="com.datadog.httplogmonitor.transformer.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

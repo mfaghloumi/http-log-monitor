@@ -1,6 +1,6 @@
-package com.datadog.logmonitor.pubsub;
+package com.datadog.httplogmonitor.pubsub;
 
-import com.datadog.logmonitor.pubsub.subscriber.Subscriber;
+import com.datadog.httplogmonitor.pubsub.subscriber.Subscriber;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 

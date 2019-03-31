@@ -1,4 +1,4 @@
-package com.datadog.logmonitor.utils;
+package com.datadog.httplogmonitor.utils;
 
 import lombok.Data;
 import lombok.experimental.UtilityClass;

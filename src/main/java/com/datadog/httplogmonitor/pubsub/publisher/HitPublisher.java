@@ -1,9 +1,9 @@
-package com.datadog.logmonitor.pubsub.publisher;
+package com.datadog.httplogmonitor.pubsub.publisher;
 
-import com.datadog.logmonitor.transformer.HitTransformer;
-import com.datadog.logmonitor.pubsub.Message;
-import com.datadog.logmonitor.pubsub.Messages;
-import com.datadog.logmonitor.pubsub.PubSub;
+import com.datadog.httplogmonitor.transformer.HitTransformer;
+import com.datadog.httplogmonitor.pubsub.Message;
+import com.datadog.httplogmonitor.pubsub.Messages;
+import com.datadog.httplogmonitor.pubsub.PubSub;
 import org.apache.commons.io.input.Tailer;
 import org.apache.commons.io.input.TailerListener;
 

@@ -1,6 +1,6 @@
-package com.datadog.logmonitor.transformer;
+package com.datadog.httplogmonitor.transformer;
 
-import com.datadog.logmonitor.domain.Hit;
+import com.datadog.httplogmonitor.domain.Hit;
 
 import javax.annotation.Nullable;
 import java.util.Optional;

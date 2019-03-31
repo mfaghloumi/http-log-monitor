@@ -1,4 +1,4 @@
-package com.datadog.logmonitor.pubsub;
+package com.datadog.httplogmonitor.pubsub;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

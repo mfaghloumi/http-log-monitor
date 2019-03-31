@@ -1,7 +1,7 @@
-package com.datadog.logmonitor.pubsub.subscriber;
+package com.datadog.httplogmonitor.pubsub.subscriber;
 
-import com.datadog.logmonitor.domain.Hit;
-import com.datadog.logmonitor.pubsub.Message;
+import com.datadog.httplogmonitor.domain.Hit;
+import com.datadog.httplogmonitor.pubsub.Message;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,18 +1,18 @@
-package com.datadog.logmonitor;
+package com.datadog.httplogmonitor;
 
-import com.datadog.logmonitor.pubsub.Messages;
-import com.datadog.logmonitor.pubsub.PubSub;
-import com.datadog.logmonitor.pubsub.publisher.HitPublisher;
-import com.datadog.logmonitor.pubsub.publisher.ScheduledPublisher;
-import com.datadog.logmonitor.pubsub.subscriber.HitsPerSecondSubscriber;
-import com.datadog.logmonitor.pubsub.subscriber.HitsPerSectionSubscriber;
-import com.datadog.logmonitor.utils.CommandUtils;
-import com.datadog.logmonitor.utils.CommandUtils.Parameters;
+import com.datadog.httplogmonitor.pubsub.Messages;
+import com.datadog.httplogmonitor.pubsub.PubSub;
+import com.datadog.httplogmonitor.pubsub.publisher.HitPublisher;
+import com.datadog.httplogmonitor.pubsub.publisher.ScheduledPublisher;
+import com.datadog.httplogmonitor.pubsub.subscriber.HitsPerSecondSubscriber;
+import com.datadog.httplogmonitor.pubsub.subscriber.HitsPerSectionSubscriber;
+import com.datadog.httplogmonitor.utils.CommandUtils;
+import com.datadog.httplogmonitor.utils.CommandUtils.Parameters;
 import org.apache.commons.io.input.Tailer;
 
 import java.io.File;
 
-import static com.datadog.logmonitor.pubsub.Topic.*;
+import static com.datadog.httplogmonitor.pubsub.Topic.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 //TODO Statistics

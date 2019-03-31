@@ -1,4 +1,4 @@
-package com.datadog.logmonitor.domain;
+package com.datadog.httplogmonitor.domain;
 
 import lombok.Data;
 

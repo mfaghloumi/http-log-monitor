@@ -1,6 +1,6 @@
-package com.datadog.logmonitor.pubsub.subscriber;
+package com.datadog.httplogmonitor.pubsub.subscriber;
 
-import com.datadog.logmonitor.pubsub.Message;
+import com.datadog.httplogmonitor.pubsub.Message;
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 
 import java.time.LocalDateTime;
