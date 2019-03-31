@@ -6,7 +6,6 @@ import com.google.common.collect.Multimap;
 
 import java.util.Arrays;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -16,11 +15,9 @@ public class PubSub {
 
     private static final int DEFAULT_QUEUE_MAX_SIZE = 10_000;
 
-    private Multimap<String, Subscriber> subscribersPerTopic = synchronizedMultimap(HashMultimap.create());
+    private Multimap<Topic, Subscriber> subscribersPerTopic = synchronizedMultimap(HashMultimap.create());
 
     private BlockingQueue<Message> messages;
-
-    private Executor executor = Executors.newSingleThreadExecutor();
 
     public PubSub() {
         this(DEFAULT_QUEUE_MAX_SIZE);
@@ -28,7 +25,7 @@ public class PubSub {
 
     public PubSub(int queueMaxSize) {
         messages = new LinkedBlockingQueue<>(queueMaxSize);
-        executor.execute(this::distribute);
+        Executors.newSingleThreadExecutor().execute(this::distribute);
     }
 
     public void publish(Message<?> message) {
@@ -40,11 +37,11 @@ public class PubSub {
         }
     }
 
-    public void subscribe(Subscriber subscriber, String... topics) {
+    public void subscribe(Subscriber subscriber, Topic... topics) {
         Arrays.stream(topics).forEach(topic -> subscribersPerTopic.put(topic, subscriber));
     }
 
-    public void unsubscribe(Subscriber subscriber, String... topics) {
+    public void unsubscribe(Subscriber subscriber, Topic... topics) {
         Arrays.stream(topics).forEach(topic -> subscribersPerTopic.remove(topic, subscriber));
     }
 

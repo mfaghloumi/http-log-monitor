@@ -8,9 +8,6 @@ import java.util.Queue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static com.datadog.logmonitor.pubsub.Topics.AGGREGATE_PER_SECOND;
-import static com.datadog.logmonitor.pubsub.Topics.NEW_HIT;
-
 public class HitsPerSecondSubscriber implements Subscriber {
 
     private static final String HIGH_TRAFFIC_LOG_PATTERN = "### High traffic generated an alert - hits = %s, triggered at %s%n";
@@ -40,7 +37,6 @@ public class HitsPerSecondSubscriber implements Subscriber {
         }
     }
 
-    //TODO Race condition on Circular Queue
     private void aggregatePerSecond() {
         hitsPerSecondForLastTwoMinutes.add(hitsPerSecond.getAndSet(0));
         double averageHitsPerTwoMinutes = hitsPerSecondForLastTwoMinutes

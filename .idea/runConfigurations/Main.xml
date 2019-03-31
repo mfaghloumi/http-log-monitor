@@ -5,7 +5,7 @@
     <option name="PROGRAM_PARAMETERS" value="-f access.log -t 10" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.datadog.logmonitor.*" />
+        <option name="PATTERN" value="com.datadog.logmonitor.transformer.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

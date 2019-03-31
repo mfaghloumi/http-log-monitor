@@ -1,4 +1,4 @@
-package com.datadog.logmonitor;
+package com.datadog.logmonitor.transformer;
 
 import com.datadog.logmonitor.domain.Hit;
 

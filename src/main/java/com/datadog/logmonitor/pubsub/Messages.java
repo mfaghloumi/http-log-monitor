@@ -3,7 +3,7 @@ package com.datadog.logmonitor.pubsub;
 import com.datadog.logmonitor.domain.Hit;
 import lombok.experimental.UtilityClass;
 
-import static com.datadog.logmonitor.pubsub.Topics.*;
+import static com.datadog.logmonitor.pubsub.Topic.*;
 
 @UtilityClass
 public class Messages {

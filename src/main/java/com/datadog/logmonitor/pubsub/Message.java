@@ -7,11 +7,11 @@ import lombok.Data;
 @AllArgsConstructor
 public class Message<T> {
 
-    private String topic;
+    private Topic topic;
 
     private T payload;
 
-    Message(String topic) {
+    Message(Topic topic) {
         this.topic = topic;
     }
 }

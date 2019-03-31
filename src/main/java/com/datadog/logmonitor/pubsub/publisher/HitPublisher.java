@@ -1,6 +1,6 @@
 package com.datadog.logmonitor.pubsub.publisher;
 
-import com.datadog.logmonitor.HitTransformer;
+import com.datadog.logmonitor.transformer.HitTransformer;
 import com.datadog.logmonitor.pubsub.Message;
 import com.datadog.logmonitor.pubsub.Messages;
 import com.datadog.logmonitor.pubsub.PubSub;

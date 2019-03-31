@@ -7,9 +7,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import static com.datadog.logmonitor.pubsub.Topics.AGGREGATE_PER_SECTION;
-import static com.datadog.logmonitor.pubsub.Topics.NEW_HIT;
-
 public class HitsPerSectionSubscriber implements Subscriber {
 
     private ConcurrentMap<String, Long> hitsPerSection = new ConcurrentHashMap<>();

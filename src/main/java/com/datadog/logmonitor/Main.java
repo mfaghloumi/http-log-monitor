@@ -12,11 +12,10 @@ import org.apache.commons.io.input.Tailer;
 
 import java.io.File;
 
-import static com.datadog.logmonitor.pubsub.Topics.*;
+import static com.datadog.logmonitor.pubsub.Topic.*;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 //TODO Statistics
-//TODO Builder for P/S Framework
 public class Main {
 
     private static final int DELAY_MILLIS = 500;
@@ -27,10 +26,8 @@ public class Main {
 
         PubSub pubsub = new PubSub();
 
-        ScheduledPublisher aggregatePerSectionPublisher = new ScheduledPublisher(pubsub,
-                Messages::aggregatePerSectionMessage, 0, 10, SECONDS);
-        ScheduledPublisher aggregatePerSecondPublisher = new ScheduledPublisher(pubsub,
-                Messages::aggregatePerSecondMessage, 0, 1, SECONDS);
+        new ScheduledPublisher(pubsub, Messages::aggregatePerSectionMessage, 0, 10, SECONDS);
+        new ScheduledPublisher(pubsub, Messages::aggregatePerSecondMessage, 0, 1, SECONDS);
         HitPublisher hitPublisher = new HitPublisher(pubsub);
         Tailer tailer = new Tailer(new File(parameters.getFilename()), hitPublisher, DELAY_MILLIS, true);
 
