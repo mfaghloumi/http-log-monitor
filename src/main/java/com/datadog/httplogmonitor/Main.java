@@ -17,7 +17,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class Main {
 
-    private static final int DELAY_MILLIS = 500;
+    private static final int DELAY_MILLIS = 100;
 
     public static void main(String[] args) {
 
